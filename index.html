@@ -168,7 +168,7 @@
         
         // 设置画布尺寸
         function resizeCanvas() {
-            const pixelRatio = window.devicePixelRatio || 1;
+            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
             canvas.width = window.innerWidth * pixelRatio;
             canvas.height = window.innerHeight * pixelRatio;
             canvas.style.width = window.innerWidth + 'px';
@@ -186,9 +186,9 @@
         
         // 性能限制参数 - 增加粒子上限
         const MAX_FIREWORKS = 10; // 减少同时存在的烟花数量，但每个更壮观
-        const MAX_PARTICLES = 3500; // 增加粒子上限
+        const MAX_PARTICLES = 1500; // 增加粒子上限
         const MAX_TRAIL_LENGTH = 4; // 增加轨迹长度
-        const AUTO_FIREWORK_INTERVAL = 3000; // 稍微增加间隔时间
+        const AUTO_FIREWORK_INTERVAL = 2100; // 稍微增加间隔时间
         
         // 烟花和粒子数组
         const fireworks = [];
@@ -357,22 +357,22 @@
                 
                 switch(this.style) {
                     case FIREWORK_STYLES.STANDARD:
-                        particleCount = 120 + Math.floor(Math.random() * 50); // 增加粒子数
+                        particleCount = 70 + Math.floor(Math.random() * 30); // 增加粒子数
                         speedMultiplier = 1.2; // 增加速度
                         this.createStandardExplosion(particleCount, speedMultiplier);
                         break;
                     case FIREWORK_STYLES.COLORFUL:
-                        particleCount = 150 + Math.floor(Math.random() * 60);
+                        particleCount = 90 + Math.floor(Math.random() * 40);
                         speedMultiplier = 1.4;
                         this.createColorfulExplosion(particleCount, speedMultiplier);
                         break;
                     case FIREWORK_STYLES.HEART:
-                        particleCount = 180; // 增加心形粒子
+                        particleCount = 100; // 增加心形粒子
                         speedMultiplier = 1.0;
                         this.createHeartExplosion(particleCount, speedMultiplier);
                         break;
                     case FIREWORK_STYLES.SPIRAL:
-                        particleCount = 200; // 增加螺旋粒子
+                        particleCount = 120; // 增加螺旋粒子
                         speedMultiplier = 1.1;
                         this.createSpiralExplosion(particleCount, speedMultiplier);
                         break;
@@ -941,7 +941,7 @@
         const stars = [];
         function initStars() {
             stars.length = 0;
-            const starCount = Math.min(150, Math.floor((window.innerWidth * window.innerHeight) / 6000));
+            const starCount = Math.min(80, Math.floor((window.innerWidth * window.innerHeight) / 8000));
             
             for (let i = 0; i < starCount; i++) {
                 stars.push({
@@ -1014,7 +1014,7 @@
             }
             
             // 更新和绘制所有粒子
-            const maxParticlesToUpdate = Math.min(particles.length, 700);
+            const maxParticlesToUpdate = Math.min(particles.length, 300);
             for (let i = 0; i < maxParticlesToUpdate; i++) {
                 const particle = particles[i];
                 if (particle) {
@@ -1140,6 +1140,7 @@
            
            
           
+
 
 
 
